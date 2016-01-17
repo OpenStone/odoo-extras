@@ -28,6 +28,7 @@
     'summary': 'price_tax_included_fix',
     'description': """
 price_tax_included_fix
+https://github.com/odoo/odoo/issues/8330
     """,
     'author': 'Oliver Yuan',
     'website': 'http://www.openstone.cn',

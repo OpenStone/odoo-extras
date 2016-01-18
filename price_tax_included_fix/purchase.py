@@ -40,7 +40,7 @@ class purchase_order(osv.osv):
         ''' prepare the stock move data from the PO line. This function returns a list of dictionary ready to be used in stock.move's create()'''
         product_uom = self.pool.get('product.uom')
         price_unit = order_line.price_unit
-        line_qty = 1
+        line_qty = 1000000.0
         price_unit_exclude_tax = self.pool.get('account.tax').compute_all(cr, uid, order_line.taxes_id, price_unit,
                                         line_qty, order_line.product_id,
                                         order_line.order_id.partner_id)['total']
@@ -72,7 +72,7 @@ class purchase_order(osv.osv):
             'state': 'draft',
             'purchase_line_id': order_line.id,
             'company_id': order.company_id.id,
-            'price_unit': price_unit_exclude_tax,
+            'price_unit': price_unit_exclude_tax/1000000.0,
             'picking_type_id': order.picking_type_id.id,
             'group_id': group_id,
             'procurement_id': False,
